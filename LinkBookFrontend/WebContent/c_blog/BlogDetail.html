@@ -1,0 +1,87 @@
+<div class="container" ng-controller="BlogCommentController">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<div class="container">
+  
+
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">{{blogInfo.blogName}}</button>
+  
+  <div id="demo" class="collapse">
+    {{blogInfo.blogContent}}
+  </div>              
+        {{blogInfo.likes}}<input type="button" value="Likes" ng-click="incrementLikes(blogInfo.blogId)"/>
+        {{blogInfo.dislikes}}<input type="button" value="DisLikes" ng-click="incrementDisLikes(blogInfo.blogId)"/>
+            
+       </div> 
+       
+    
+    
+      
+      
+       
+       
+       <div>
+       <input type="text" ng-model="blogComment.commentText" name="commentText">
+       <input type="button" value="Add Comment" ng-click="addComment()" class="btn btn-primary"/></div>
+       </div>
+       
+       </table>
+       
+       
+       <html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+h2  {color: Gray;
+    font-family: Georgia;
+    font-size: 300%;
+    text-align: center;
+    
+    }
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<div class="container" ng-controller="BlogCommentController">
+<body>
+<br/><br/><br/><br/>
+<table>
+<tr>
+<th>Blog Name</th>
+<th>Comments</th>
+<th>Date</th>
+<th>Commented By</th>
+<th>Operations</th>
+</tr>
+<tr ng-repeat="blogComment in blogComments">
+    <td>{{blogInfo.blogId}}</td>
+    <td>{{blogComment.commentText}}</td>
+    <td>{{blogComment.commentDate}}</td>
+    <td>{{blogComment.username}}</td>
+   <td>
+       <div ng-show="currentUser.role=='Admin'">>
+       <input type="button" value="Delete" ng-click="deleteBlog(blogComment.commentId)" class="btn btn-danger"/>
+</div>
+</td>
+</tr>
+</table>
+      
+          
+</body>
+</div>
+</html>

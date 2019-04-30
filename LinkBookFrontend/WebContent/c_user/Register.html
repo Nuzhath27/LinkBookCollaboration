@@ -1,0 +1,42 @@
+
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script>
+
+</head>
+<style text="css">
+
+body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+}
+
+</style>
+
+
+<body>
+<div class="container" ng-controller="UserController">
+
+<div class="span10 well">
+      <legend>New to LinkBook? Sign up!</legend>
+    <form>
+		<input class="span5" ng-model="User.customerName"  placeholder="Full Name" type="text"> 
+        <input class="span5" ng-model="User.username"  placeholder="Username" type="text">
+        <input class="span5" ng-model="User.password"  placeholder="Password" type="password"> 
+        <input class="span5" ng-model="User.emailId"  placeholder="emailId" type="text"> 
+        <input class="span5" ng-model="User.role"  placeholder="role" type="text">
+        <br/><br/>
+        <button class="btn btn-warning" type="submit" value="Register" ng-click="register()">Sign up for LinkBook</button>
+    </form>
+</div>
+
+
+</div>
+</body>
+</html>

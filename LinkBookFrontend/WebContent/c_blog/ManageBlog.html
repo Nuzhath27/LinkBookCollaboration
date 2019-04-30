@@ -1,0 +1,67 @@
+
+
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+h2  {color: blue;
+    font-family: Georgia;
+    font-size: 300%;
+    text-align: center;
+    
+    }
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+
+<h2>Manage Blog</h2>
+
+
+<div class="container" ng-controller="BlogController">
+
+
+
+<table>
+
+  <tr>
+    <th>Blog Id</th>
+    <th>Blog Name</th>
+    <th>Created By</th>
+    <th>Cretaed On</th>
+    <th>Approve/Reject</th>
+    <th>Delete</th>
+  </tr>
+  <tr ng-repeat="blog in blogData">
+    <td>{{blog.blogId}}</td>
+    <td>{{blog.blogName}}</td>
+    <td>{{blog.username}}</td>
+    <td>{{blog.createDate}}</td>
+    <td ng-show="blog.status=='NA'">
+        <input type="button" value="Approve" ng-click="approveBlog(blog.blogId)" class="btn btn-primary"/>
+    <td ng-show="blog.status=='A'">
+        <input type="button" value="Reject" ng-click="rejectBlog(blog.blogId)" class="btn btn-warning"/>
+     </td>  
+     <td>
+        <input type="button" value="Delete" ng-click="deleteBlog(blog.blogId)" class="btn btn-danger"/>
+     </td>  
+  </tr>
+  </table>
+</div>
+
+</body>
+</html>

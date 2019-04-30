@@ -1,0 +1,80 @@
+
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Link Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular-cookies.js"></script>  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ 
+    <script type="text/javascript" src="RouteConfig.js"></script>
+    <script type="text/javascript" src="c_user/UserController.js"></script>
+    <script type="text/javascript" src="c_blog/BlogController.js"></script>
+    <script type="text/javascript" src="c_blog/BlogCommentController.js"></script>
+    <script src="c_chat/ChatController.js"></script>
+    <script src="c_chat/ChatService.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+</head>
+
+
+<body ng-app="myApp">
+
+
+
+<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+<div class="navbar-header">
+ <a class="navbar-brand" href="#">LinkBook</a>
+ </div>
+ 
+ <ul class="navbar-nav">
+ <li><a class="nav-link" href="#/home" ng-hide="currentUser==undefined">Home</a></li>
+    <li><a class="nav-link" href="#/login" ng-show="currentUser==undefined">LogIn</a></li>     
+    <li><a class="nav-link" href="#/register" ng-show="currentUser==undefined">Register</a></li>
+    <li><a class="nav-link" href="#/aboutus" ng-show="currentUser==undefined">AboutUs</a></li>
+    <li><a class="nav-link" href="#/profilepicture" ng-hide="currentUser==undefined">Profile Picture</a></li>
+    <li><a class="nav-link" href="#/chat" ng-hide="currentUser==undefined">Chat</a></li>
+    <li class="nav-item dropdown" ng-hide="currentUser==undefined">
+    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Blog</a>
+    <ul class="dropdown-menu">
+    
+      <li><a class="dropdown-item" href="#/AddBlog">AddBlog</a></li>
+       <li><a class="dropdown-item" href="#/showBlog">ShowBlog</a></li>
+       <li ng-show="currentUser.role=='Admin'"><a class="dropdown-item" href="#/manageBlog">ManageBlog</a></li>
+    
+    </ul>
+    </li>
+    
+    <li class="nav-item dropdown" ng-hide="currentUser==undefined">
+    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Forum</a>
+    <ul class="dropdown-menu">
+    
+      <li><a class="dropdown-item" href="#/AddForum">AddForum</a></li>
+       <li><a class="dropdown-item" href="#/showForum">ShowForum</a></li>
+    
+    </ul>
+    </li>
+  </ul>
+ 
+ <div class="nav navbar-right" ng-hide="currentUser==undefined">
+			<img src="http://localhost:8085/LinkBookMiddleware/getImage/{{currentUser.username}}" width="20" height="20"/>
+			<font color="white">{{currentUser.customerName}}</font>
+			<form ng-controller="UserController">
+				<input type="button" value="SignOut" class="btn btn-warning" ng-click="logout()"/>
+			</form>
+		</div>
+   
+
+  
+  
+ </nav>
+
+ <div ng-view></div>
+</body>
+</html>

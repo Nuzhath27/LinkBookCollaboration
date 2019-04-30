@@ -1,0 +1,65 @@
+<div class="container" ng-controller="BlogController">
+
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+h2  {color: Gray;
+    font-family: Times New Roman;
+    font-size: 300%;
+    text-align: center;
+    
+    }
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+
+<h2>Update Blog</h2>
+
+<table>
+   <tr>
+     <td>Blog ID </td>
+     <td><input type="text" ng-model="blogInfo.blogId" readonly/></td>
+   </tr>
+   
+   <tr>
+     <td>Blog Name </td>
+     <td><input type="text" ng-model="blogInfo.blogName"/></td>
+   </tr>
+   
+   <tr>
+     <td>Blog Content </td>
+     <td><input type="text" ng-model="blogInfo.blogContent"/></td>
+   </tr>
+   
+   <tr>
+     <td colspan="2">
+     <center>
+     <input type="button" value="Update Blog" ng-click="updateBlog()" class="btn btn-warning"/>
+     </center>
+     </td>
+     
+   </tr>
+   
+   
+
+</table>
+
+
+
+</div>
